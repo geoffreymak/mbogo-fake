@@ -1,0 +1,45 @@
+tags:
+- name: payements
+  description: payements API
+
+paths:
+# [POST] payements
+  /payements:
+    post:
+      tags:
+      - payements
+      summary: Add payements
+      parameters:
+      - name: body
+        in: body
+        description: payements Data
+        required: true
+        schema:
+          $ref: '#/definitions/payements'
+      responses:
+        201:
+          description: 'Created'
+        400:
+          description: 'Bad Request'
+        409:
+          description: 'Conflict'
+        500:
+          description: 'Server Error'
+# definitions
+definitions:
+  payements:
+    type: object
+    required:
+        - fallback
+        - type
+    properties:
+      fallback:
+        type: string
+        description: server fallback uri to confirm payement
+      type:
+        type: string
+        description: type of payements
+
+schemes:
+ - https
+ - http
